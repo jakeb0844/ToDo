@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/todos.js"></script>
+</head>
+
+<style>
+    ol{
+        padding: 5rem;
+    }
+    li{
+        padding: .5rem;
+    }
+</style>
+
+<body class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-2xl w-full h-auto mt-10" style="">
+<p class=" text-center text-5xl mb-5 font-light font-serif">ToDos</p>
+
+        <div class="text-center">
+            <form id="form">
+                <input name="todo" type="text" class="rounded-lg text-black p-1 w-1/2 h-12 m4" placeholder="Type todo...">
+                <!-- <input type="submit" class="cursor-pointer p-3 underline" value="Add"> -->
+                <button class="p-3 rounded bg-indigo-500 hover:bg-indigo-600" type="submit" form="form" value="add">Add</button>
+            </form>
+        </div>
+
+        <!-- to-dos -->
+        <div class="w-72 mx-auto">
+            <ol class="list-decimal p-5">
+                
+            </ol>
+        </div>
+
+    </div>
+    <script>
+        var todo = new Todos($('ol'),$('form'))
+
+        todo.form_element.on('submit',function(e){
+            e.preventDefault();
+
+            if(todo.validate_field()){
+                todo.add();
+            }
+            
+        })
+
+        
+    </script>
+</body>
+
+</html>
