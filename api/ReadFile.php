@@ -1,10 +1,11 @@
 <?php
 
+$filename = $_GET['filename'];
 
 try {
-    $myfile = fopen("save.json", "r") or die('Unable to open file!');
+    $myfile = fopen($filename, "r") or die('Unable to open file!');
 
-    $filesize = filesize('save.json');
+    $filesize = filesize($filename);
 
     if($filesize > 0){
         echo fread($myfile, $filesize);

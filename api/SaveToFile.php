@@ -1,8 +1,9 @@
 <?php
 
-if(isset($_POST['json'])){
+if(isset($_POST['json']) && isset($_POST['filename'])){
+    $filename = $_POST['filename'];
     try {
-        $myfile = fopen("save.json", "w") or die('Unable to open file!');
+        $myfile = fopen($filename, "w") or die('Unable to open file!');
         fwrite($myfile,$_POST['json']);
         fclose($myfile);
         echo "File Saved";

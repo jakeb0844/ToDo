@@ -31,6 +31,7 @@
                 <input name="todo " type="text " class="rounded-lg text-black p-1 w-1/2 h-12 m4 " placeholder="Type a todo... ">
                 <!-- <input type="submit " class="cursor-pointer p-3 underline " value="Add "> -->
                 <button class="p-3 rounded bg-indigo-500 hover:bg-indigo-600 " type="submit " form="form " value="add ">Add</button>
+                <button class="p-3 rounded bg-indigo-500 hover:bg-indigo-600 ">History</button>
             </form>
         </div>
 
@@ -39,18 +40,24 @@
             <ol class="list-decimal p-5 ">
 
             </ol>
+            <div class="history">
+                <ul class="list-decimal p-5">
+
+                </ul>
+            </div>
         </div>
 
     </div>
     <script>
-        var todo = new Todos($('ol'), $('form'))
+        var todo = new Todos($('ol'), $('form'),$('ul'))
 
         todo.form_element.on('submit', function(e) {
+            
             e.preventDefault();
 
             if (todo.validate_field()) {
-                todo.add();
-                todo.save();
+                todo.add(undefined,'current');
+                todo.save(todo.currentFileName);
             }
 
         });
